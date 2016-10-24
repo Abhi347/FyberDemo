@@ -8,6 +8,8 @@ import com.abhi.fyberdemo.fragments.OffersFragment;
 import com.abhi.fyberdemo.listeners.FragmentListener;
 import com.abhi.fyberdemo.models.OfferResponse;
 import com.abhi.fyberdemo.utilities.FiberController;
+import com.noob.lumberjack.LogLevel;
+import com.noob.lumberjack.LumberJack;
 
 import butterknife.ButterKnife;
 
@@ -20,6 +22,9 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        if(!BuildConfig.DEBUG){
+            LumberJack.setLogLevel(LogLevel.None);
+        }
 
         FiberController.getInstance().init(this);
 
