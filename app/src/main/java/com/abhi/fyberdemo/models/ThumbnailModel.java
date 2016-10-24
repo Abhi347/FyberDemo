@@ -10,7 +10,7 @@ public class ThumbnailModel {
     @SerializedName("lowres")
     private String lowRes;
 
-    @SerializedName("highres")
+    @SerializedName("hires")
     private String highRes;
 
     public String getLowRes() {
