@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">FyberDemo</string>
+    <string name="enter_uid_here">Enter uid here</string>
+    <string name="enter_api_key_here">Enter API Key here</string>
+    <string name="enter_app_id_here">Enter app id here</string>
+    <string name="enter_pub0_here">Enter pub0 here</string>
+    <string name="get_data">Get Data</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

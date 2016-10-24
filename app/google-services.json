@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "111054277053",
+    "firebase_url": "https://fyberdemo.firebaseio.com",
+    "project_id": "fyberdemo",
+    "storage_bucket": "fyberdemo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111054277053:android:42c275bbeb5596cd",
+        "android_client_info": {
+          "package_name": "com.abhi.fyberdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "111054277053-4s27gtiqueln1ivg1kh16785mh3anllk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.abhi.fyberdemo",
+            "certificate_hash": "4C9C6EB92C0F3589AB24DD666D35D4705BB10EE4"
+          }
+        },
+        {
+          "client_id": "111054277053-lj9p25k5paktaquhu0nrp65nre8p8t39.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbl0o_EY9EhsRVZ5v3eZLh3s8WvskWeCk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "111054277053-lj9p25k5paktaquhu0nrp65nre8p8t39.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
