@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.abhi.fyberdemo.R;
+import com.abhi.fyberdemo.listeners.OfferClickListener;
 import com.abhi.fyberdemo.models.OfferModel;
 import com.squareup.picasso.Picasso;
 
@@ -26,14 +27,21 @@ public class OfferViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.text_action)
     protected TextView mActionTextView;
     private OfferModel mOfferModel;
+    private OfferClickListener mListener;
 
 
-    public OfferViewHolder(View itemView) {
+    public OfferViewHolder(final View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.OnOfferClick(itemView, mOfferModel);
+            }
+        });
     }
 
-    public void setModel(OfferModel offer){
+    public void setModel(OfferModel offer) {
         mOfferModel = offer;
         Picasso
                 .with(mThumbnailImageView.getContext())
@@ -41,5 +49,9 @@ public class OfferViewHolder extends RecyclerView.ViewHolder {
                 .into(mThumbnailImageView);
         mTitleTextView.setText(mOfferModel.getTitle());
         mActionTextView.setText(mOfferModel.getRequiredActions());
+    }
+
+    public void setListener(OfferClickListener listener) {
+        mListener = listener;
     }
 }

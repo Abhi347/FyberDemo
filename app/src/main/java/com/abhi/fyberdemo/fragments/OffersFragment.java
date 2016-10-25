@@ -1,6 +1,9 @@
 package com.abhi.fyberdemo.fragments;
 
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +12,8 @@ import android.view.View;
 import com.abhi.fyberdemo.R;
 import com.abhi.fyberdemo.adapters.OffersAdapter;
 import com.abhi.fyberdemo.listeners.FragmentListener;
+import com.abhi.fyberdemo.listeners.OfferClickListener;
+import com.abhi.fyberdemo.models.OfferModel;
 import com.abhi.fyberdemo.models.OfferResponse;
 
 import butterknife.BindView;
@@ -50,8 +55,19 @@ public class OffersFragment extends BaseFragment {
 
         // specify an adapter (see also next example)
         mOfferAdapter = new OffersAdapter();
+        mOfferAdapter.setOfferClickListener(new OfferClickListener() {
+            @Override
+            public void OnOfferClick(View view, OfferModel offer) {
+                try {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(offer.getLink()));
+                    startActivity(browserIntent);
+                } catch (ActivityNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
         mOffersRecyclerView.setAdapter(mOfferAdapter);
-        if(mOfferResponse!=null && mOfferResponse.getOffers()!=null) {
+        if (mOfferResponse != null && mOfferResponse.getOffers() != null) {
             mOfferAdapter.setOfferModels(mOfferResponse.getOffers());
         }
     }
