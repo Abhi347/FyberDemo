@@ -2,11 +2,16 @@ package com.abhi.fyberdemo.fragments;
 
 
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.abhi.fyberdemo.R;
+import com.abhi.fyberdemo.adapters.OffersAdapter;
 import com.abhi.fyberdemo.listeners.FragmentListener;
 import com.abhi.fyberdemo.models.OfferResponse;
+
+import butterknife.BindView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +21,10 @@ import com.abhi.fyberdemo.models.OfferResponse;
 public class OffersFragment extends BaseFragment {
     private FragmentListener mFragmentListener;
     private OfferResponse mOfferResponse;
+
+    @BindView(R.id.list_offers)
+    protected RecyclerView mOffersRecyclerView;
+    private OffersAdapter mOfferAdapter;
 
     public OffersFragment() {
         // Required empty public constructor
@@ -36,7 +45,15 @@ public class OffersFragment extends BaseFragment {
 
     @Override
     protected void setupUI(View parent) {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        mOffersRecyclerView.setLayoutManager(layoutManager);
 
+        // specify an adapter (see also next example)
+        mOfferAdapter = new OffersAdapter();
+        mOffersRecyclerView.setAdapter(mOfferAdapter);
+        if(mOfferResponse!=null && mOfferResponse.getOffers()!=null) {
+            mOfferAdapter.setOfferModels(mOfferResponse.getOffers());
+        }
     }
 
     @Override

@@ -36,5 +36,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'com.google.code.gson:gson:2.7'
+    compile 'com.android.support:recyclerview-v7:24.2.1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }
 apply plugin: 'com.google.gms.google-services'
