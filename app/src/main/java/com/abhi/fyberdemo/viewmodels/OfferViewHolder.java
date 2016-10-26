@@ -19,13 +19,17 @@ import butterknife.ButterKnife;
 
 public class OfferViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.image_thumbnail)
-    protected ImageView mThumbnailImageView;
+    ImageView mThumbnailImageView;
 
     @BindView(R.id.text_title)
-    protected TextView mTitleTextView;
+    TextView mTitleTextView;
 
     @BindView(R.id.text_action)
-    protected TextView mActionTextView;
+    TextView mActionTextView;
+
+    @BindView(R.id.text_payout)
+    TextView mPayoutTextView;
+
     private OfferModel mOfferModel;
     private OfferClickListener mListener;
 
@@ -48,7 +52,8 @@ public class OfferViewHolder extends RecyclerView.ViewHolder {
                 .load(mOfferModel.getThumbnail().getLowRes())
                 .into(mThumbnailImageView);
         mTitleTextView.setText(mOfferModel.getTitle());
-        mActionTextView.setText(mOfferModel.getRequiredActions());
+        mActionTextView.setText(mOfferModel.getTeaser());
+        mPayoutTextView.setText("+"+mOfferModel.getPayout());
     }
 
     public void setListener(OfferClickListener listener) {
