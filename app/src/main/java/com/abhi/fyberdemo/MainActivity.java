@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
 
         FiberController.getInstance().init(this);
 
+        onHideProgress();
         showFormFragment();
     }
 
