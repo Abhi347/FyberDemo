@@ -20,6 +20,7 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Locale;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -123,6 +124,7 @@ public class FiberController {
         OkHttpClient client = new OkHttpClient();
 
         long unixTime = System.currentTimeMillis() / 1000L;
+        String locale = Locale.getDefault().getLanguage().toUpperCase();
 
         HashMap<String, String> paramsMap = new HashMap<>();
         paramsMap.put("appid", appId);
@@ -130,7 +132,7 @@ public class FiberController {
         paramsMap.put("google_ad_id", mGoogleAdId);
         paramsMap.put("google_ad_id_limited_tracking_enabled", String.valueOf(mIsLimitAdTrackingEnabled));
         paramsMap.put("ip", "109.235.143.113");
-        paramsMap.put("locale", "DE");
+        paramsMap.put("locale", locale);
         paramsMap.put("offer_types", "112");
         paramsMap.put("os_version", Build.VERSION.RELEASE);
         paramsMap.put("pub0", pub0);
