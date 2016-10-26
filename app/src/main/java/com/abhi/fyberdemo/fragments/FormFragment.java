@@ -65,16 +65,21 @@ public class FormFragment extends BaseFragment {
     }
 
     @OnClick(R.id.button_get_data)
-    public void onGetDataClick(View view) {
+    public void onGetDataClick(final View view) {
         String uid = mUidEditText.getText().toString();
         String apiKey = mApiKeyEditText.getText().toString();
         String appId = mAppIdEditText.getText().toString();
         String pub0 = mPub0EditText.getText().toString();
 
+        view.setEnabled(false);
+        getFragmentListener().onShowProgress();
+
         FiberController.getInstance().getOfferWall(uid, apiKey, appId, pub0, new OfferListener() {
             @Override
             public void onOfferReceived(OfferResponse response) {
                 getFragmentListener().onOfferReceived(response);
+                getFragmentListener().onHideProgress();
+                view.setEnabled(true);
             }
         });
     }
