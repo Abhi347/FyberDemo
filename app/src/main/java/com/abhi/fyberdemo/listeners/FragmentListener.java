@@ -8,4 +8,6 @@ import com.abhi.fyberdemo.models.OfferResponse;
 
 public interface FragmentListener {
     void onOfferReceived(OfferResponse response);
+    void onShowProgress();
+    void onHideProgress();
 }

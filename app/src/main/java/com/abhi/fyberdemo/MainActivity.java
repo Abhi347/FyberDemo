@@ -2,6 +2,8 @@ package com.abhi.fyberdemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.abhi.fyberdemo.fragments.FormFragment;
 import com.abhi.fyberdemo.fragments.OffersFragment;
@@ -11,11 +13,15 @@ import com.abhi.fyberdemo.utilities.FiberController;
 import com.noob.lumberjack.LogLevel;
 import com.noob.lumberjack.LumberJack;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements FragmentListener{
     FormFragment mFormFragment;
     OffersFragment mOffersFragment;
+
+    @BindView(R.id.progress)
+    ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,5 +64,15 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     @Override
     public void onOfferReceived(OfferResponse response) {
         showOffersFragment(response);
+    }
+
+    @Override
+    public void onShowProgress() {
+        mProgressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onHideProgress() {
+        mProgressBar.setVisibility(View.GONE);
     }
 }
