@@ -10,15 +10,10 @@ import com.abhi.fyberdemo.models.OfferResponse;
 import com.google.android.gms.ads.identifier.AdvertisingIdClient;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
-import com.google.common.hash.HashCode;
-import com.google.common.hash.Hashing;
 import com.google.gson.Gson;
 import com.noob.lumberjack.LumberJack;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Locale;
 
@@ -125,22 +120,19 @@ public class FiberController {
 
         long unixTime = System.currentTimeMillis() / 1000L;
         String locale = Locale.getDefault().getLanguage().toUpperCase();
+        String osVersion = Build.VERSION.RELEASE;
+        HashMap<String, String> paramsMap = FyberUtility.getOffersHashMap(
+                appId,
+                mGoogleAdId,
+                pub0,
+                uid,
+                osVersion,
+                locale,
+                unixTime,
+                mIsLimitAdTrackingEnabled);
 
-        HashMap<String, String> paramsMap = new HashMap<>();
-        paramsMap.put("appid", appId);
-        paramsMap.put("format", "json");
-        paramsMap.put("google_ad_id", mGoogleAdId);
-        paramsMap.put("google_ad_id_limited_tracking_enabled", String.valueOf(mIsLimitAdTrackingEnabled));
-        paramsMap.put("ip", "109.235.143.113");
-        paramsMap.put("locale", locale);
-        paramsMap.put("offer_types", "112");
-        paramsMap.put("os_version", Build.VERSION.RELEASE);
-        paramsMap.put("pub0", pub0);
-        paramsMap.put("timestamp", String.valueOf(unixTime));
-        paramsMap.put("uid", uid);
-
-        String params = getSortedParams(paramsMap);
-        String hashString = getHashKey(params,apiKey);
+        String params = FyberUtility.getSortedParams(paramsMap);
+        String hashString = FyberUtility.getHashKey(params,apiKey);
 
         String url = BASE_OFFERS_URL + "?" + params + "&hashkey=" + hashString;
         LumberJack.d("FiberController", "url = " + url);
@@ -150,26 +142,5 @@ public class FiberController {
 
         Response response = client.newCall(request).execute();
         return response.body().string();
-    }
-
-    private String getSortedParams(HashMap<String, String> paramsMap) {
-        ArrayList<String> sortedKeys = new ArrayList<>(paramsMap.keySet());
-        Collections.sort(sortedKeys);
-
-        StringBuilder _stringBuilder = new StringBuilder();
-        for (String key : sortedKeys) {
-            if (_stringBuilder.length() <= 0) {
-                _stringBuilder.append(key).append("=").append(paramsMap.get(key));
-            }else{
-                _stringBuilder.append("&").append(key).append("=").append(paramsMap.get(key));
-            }
-        }
-        return _stringBuilder.toString();
-    }
-
-    private String getHashKey(String sortedParams, String apiKey) {
-        String preHashString = sortedParams + "&" + apiKey;
-        final HashCode hashCode = Hashing.sha1().hashString(preHashString, Charset.defaultCharset());
-        return hashCode.toString();
     }
 }
