@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.abhi.fyberdemo.R;
 import com.abhi.fyberdemo.adapters.OffersAdapter;
@@ -29,6 +30,10 @@ public class OffersFragment extends BaseFragment {
 
     @BindView(R.id.list_offers)
     protected RecyclerView mOffersRecyclerView;
+
+    @BindView(R.id.text_no_offers)
+    TextView mNoOffersTextView;
+
     private OffersAdapter mOfferAdapter;
 
     public OffersFragment() {
@@ -67,8 +72,13 @@ public class OffersFragment extends BaseFragment {
             }
         });
         mOffersRecyclerView.setAdapter(mOfferAdapter);
-        if (mOfferResponse != null && mOfferResponse.getOffers() != null) {
+        if (mOfferResponse != null && mOfferResponse.getOffers() != null && mOfferResponse.getOffers().length > 0) {
             mOfferAdapter.setOfferModels(mOfferResponse.getOffers());
+            mNoOffersTextView.setVisibility(View.GONE);
+            mOffersRecyclerView.setVisibility(View.VISIBLE);
+        } else {
+            mNoOffersTextView.setVisibility(View.VISIBLE);
+            mOffersRecyclerView.setVisibility(View.GONE);
         }
     }
 
