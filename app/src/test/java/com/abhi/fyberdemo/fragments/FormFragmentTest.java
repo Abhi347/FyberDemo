@@ -4,12 +4,10 @@ import android.support.v4.app.Fragment;
 
 import com.abhi.fyberdemo.MainActivity;
 import com.abhi.fyberdemo.R;
-import com.abhi.fyberdemo.models.OfferResponse;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 import org.robolectric.Robolectric;
 
 /**
@@ -20,7 +18,6 @@ public class FormFragmentTest {
     private FormFragment mFormFragment;
     @Before
     public void setUp() throws Exception {
-        OfferResponse _offerResponse = Mockito.mock(OfferResponse.class);
         mMainActivity = Robolectric.setupActivity(MainActivity.class);
         mFormFragment = FormFragment.newInstance(mMainActivity);
         startFragment(mFormFragment);
