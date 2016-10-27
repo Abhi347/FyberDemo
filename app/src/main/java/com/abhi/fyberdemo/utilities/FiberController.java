@@ -50,7 +50,7 @@ public class FiberController {
 
     public void init(Context context) {
         mContext = context;
-        getAdvertisingData(null);
+        //getAdvertisingData(null);
     }
 
     private void getAdvertisingData(final AdIdCallback callback) {
