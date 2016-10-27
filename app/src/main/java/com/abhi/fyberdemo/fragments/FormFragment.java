@@ -2,6 +2,7 @@ package com.abhi.fyberdemo.fragments;
 
 
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.EditText;
 
@@ -71,6 +72,15 @@ public class FormFragment extends BaseFragment {
         String appId = mAppIdEditText.getText().toString();
         String pub0 = mPub0EditText.getText().toString();
 
+        if (uid.isEmpty() || apiKey.isEmpty() || appId.isEmpty() || pub0.isEmpty()) {
+            new AlertDialog.Builder(getActivity())
+                    .setTitle("Error")
+                    .setMessage("All fields are necessary")
+                    .setNeutralButton("OK", null)
+                    .create()
+                    .show();
+            return;
+        }
         view.setEnabled(false);
         getFragmentListener().onShowProgress();
 
