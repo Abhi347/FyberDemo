@@ -50,19 +50,12 @@ public class FormFragment extends BaseFragment {
 
     @Override
     protected void setupUI(View parent) {
-        addDefaultData();
+        //AutoFillUtility.fillFormData(mUidEditText,mApiKeyEditText,mAppIdEditText,mPub0EditText);
     }
 
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_form;
-    }
-
-    private void addDefaultData() {
-        mUidEditText.setText("spiderman");
-        mApiKeyEditText.setText("1c915e3b5d42d05136185030892fbb846c278927");
-        mAppIdEditText.setText("2070");
-        mPub0EditText.setText("MainActivity");
     }
 
     @OnClick(R.id.button_get_data)
