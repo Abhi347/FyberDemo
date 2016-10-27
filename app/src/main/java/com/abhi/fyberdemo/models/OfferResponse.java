@@ -12,6 +12,10 @@ public class OfferResponse {
     private InformationModel information;
     private OfferModel[] offers;
 
+    public boolean containsOffers(){
+        return getOffers() != null && getOffers().length > 0;
+    }
+
     //region Accessors
 
     public String getCode() {
