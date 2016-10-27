@@ -9,5 +9,5 @@ import com.abhi.fyberdemo.models.OfferModel;
  */
 
 public interface OfferClickListener {
-    void OnOfferClick(View view, OfferModel offer);
+    void onOfferClick(View view, OfferModel offer);
 }

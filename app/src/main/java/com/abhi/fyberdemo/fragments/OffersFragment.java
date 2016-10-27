@@ -29,10 +29,10 @@ public class OffersFragment extends BaseFragment {
     private OfferResponse mOfferResponse;
 
     @BindView(R.id.list_offers)
-    RecyclerView mOffersRecyclerView;
+    protected RecyclerView mOffersRecyclerView;
 
     @BindView(R.id.text_no_offers)
-    TextView mNoOffersTextView;
+    protected TextView mNoOffersTextView;
 
     private OffersAdapter mOfferAdapter;
 
@@ -62,7 +62,7 @@ public class OffersFragment extends BaseFragment {
         mOfferAdapter = new OffersAdapter();
         mOfferAdapter.setOfferClickListener(new OfferClickListener() {
             @Override
-            public void OnOfferClick(View view, OfferModel offer) {
+            public void onOfferClick(View view, OfferModel offer) {
                 try {
                     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(offer.getLink()));
                     startActivity(browserIntent);

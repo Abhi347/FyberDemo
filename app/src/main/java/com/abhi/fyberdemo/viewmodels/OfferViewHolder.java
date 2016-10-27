@@ -19,16 +19,16 @@ import butterknife.ButterKnife;
 
 public class OfferViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.image_thumbnail)
-    ImageView mThumbnailImageView;
+    protected ImageView mThumbnailImageView;
 
     @BindView(R.id.text_title)
-    TextView mTitleTextView;
+    protected TextView mTitleTextView;
 
     @BindView(R.id.text_action)
-    TextView mActionTextView;
+    protected TextView mActionTextView;
 
     @BindView(R.id.text_payout)
-    TextView mPayoutTextView;
+    protected TextView mPayoutTextView;
 
     private OfferModel mOfferModel;
     private OfferClickListener mListener;
@@ -40,7 +40,7 @@ public class OfferViewHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mListener.OnOfferClick(itemView, mOfferModel);
+                mListener.onOfferClick(itemView, mOfferModel);
             }
         });
     }

@@ -15,16 +15,15 @@ import butterknife.ButterKnife;
  */
 
 public abstract class BaseFragment extends Fragment {
-    private View mParent;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mParent = inflater.inflate(getLayoutId(), container, false);
-        ButterKnife.bind(this, mParent);
-        setupUI(mParent);
-        return mParent;
+        View _parent = inflater.inflate(getLayoutId(), container, false);
+        ButterKnife.bind(this, _parent);
+        setupUI(_parent);
+        return _parent;
     }
 
     protected abstract void setupUI(View parent);
