@@ -55,13 +55,13 @@ public class MainActivityTest {
     @Test
     public void onShowProgress() throws Exception {
         mMainActivity.onShowProgress();
-        Assert.assertTrue("ProgressBar is not displayed",mMainActivity.mProgressBar.getVisibility()== View.VISIBLE);
+        Assert.assertTrue("ProgressBar is not displayed",mMainActivity.getProgressBar().getVisibility()== View.VISIBLE);
     }
 
     @Test
     public void onHideProgress() throws Exception {
         mMainActivity.onHideProgress();
-        Assert.assertTrue("ProgressBar is not hidden",mMainActivity.mProgressBar.getVisibility()== View.GONE);
+        Assert.assertTrue("ProgressBar is not hidden",mMainActivity.getProgressBar().getVisibility()== View.GONE);
     }
 
 }

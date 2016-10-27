@@ -17,11 +17,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements FragmentListener{
-    FormFragment mFormFragment;
-    OffersFragment mOffersFragment;
+    private FormFragment mFormFragment;
+    private OffersFragment mOffersFragment;
 
     @BindView(R.id.progress)
-    ProgressBar mProgressBar;
+    protected ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,5 +75,9 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
     @Override
     public void onHideProgress() {
         mProgressBar.setVisibility(View.GONE);
+    }
+
+    public ProgressBar getProgressBar() {
+        return mProgressBar;
     }
 }
