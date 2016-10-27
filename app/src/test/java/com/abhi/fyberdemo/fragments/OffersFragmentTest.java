@@ -44,11 +44,9 @@ public class OffersFragmentTest {
 
     @Test
     public void newInstance() throws Exception {
-        /*OfferResponse _offerResponse = Mockito.mock(OfferResponse.class);
-        MainActivity _mainActivity = Mockito.mock(MainActivity.class);
-        OffersFragment _offersFragment = OffersFragment.newInstance(_mainActivity,_offerResponse);*/
-        Assert.assertNotNull(mOffersFragment);
         Assert.assertNotNull(mMainActivity);
+        Assert.assertNotNull(mOffersFragment);
+        Assert.assertNotNull(mOffersFragment.getFragmentListener());
     }
 
     @Test
