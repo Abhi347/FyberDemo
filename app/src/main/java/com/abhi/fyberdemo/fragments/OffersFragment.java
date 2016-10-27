@@ -29,7 +29,7 @@ public class OffersFragment extends BaseFragment {
     private OfferResponse mOfferResponse;
 
     @BindView(R.id.list_offers)
-    protected RecyclerView mOffersRecyclerView;
+    RecyclerView mOffersRecyclerView;
 
     @BindView(R.id.text_no_offers)
     TextView mNoOffersTextView;
@@ -72,8 +72,15 @@ public class OffersFragment extends BaseFragment {
             }
         });
         mOffersRecyclerView.setAdapter(mOfferAdapter);
-        if (mOfferResponse != null && mOfferResponse.getOffers() != null && mOfferResponse.getOffers().length > 0) {
-            mOfferAdapter.setOfferModels(mOfferResponse.getOffers());
+        loadOffers(mOfferResponse);
+    }
+
+    public void loadOffers(OfferResponse offerResponse){
+        if(mOfferAdapter==null || mNoOffersTextView==null || mOffersRecyclerView==null){
+            throw new IllegalStateException("onCreateView and/or setupUI is not called yet");
+        }
+        if (offerResponse != null && offerResponse.containsOffers()) {
+            mOfferAdapter.setOfferModels(offerResponse.getOffers());
             mNoOffersTextView.setVisibility(View.GONE);
             mOffersRecyclerView.setVisibility(View.VISIBLE);
         } else {
