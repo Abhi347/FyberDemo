@@ -2,17 +2,23 @@ package com.abhi.fyberdemo.fragments;
 
 import android.support.v4.app.Fragment;
 
+import com.abhi.fyberdemo.BuildConfig;
 import com.abhi.fyberdemo.MainActivity;
 import com.abhi.fyberdemo.R;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
+import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
 
 /**
  * Created by abhi on 28/10/16.
  */
+@RunWith(RobolectricTestRunner.class)
+@Config(constants = BuildConfig.class, sdk = 23)
 public class FormFragmentTest {
     private MainActivity mMainActivity;
     private FormFragment mFormFragment;
