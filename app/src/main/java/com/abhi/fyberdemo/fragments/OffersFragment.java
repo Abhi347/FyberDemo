@@ -1,9 +1,6 @@
 package com.abhi.fyberdemo.fragments;
 
 
-import android.content.ActivityNotFoundException;
-import android.content.Intent;
-import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -63,14 +60,9 @@ public class OffersFragment extends BaseFragment {
         mOfferAdapter.setOfferClickListener(new OfferClickListener() {
             @Override
             public void onOfferClick(View view, OfferModel offer) {
-                try {
-                    //Open browser for offer link directly. Could have used a popup to show first.
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(offer.getLink()));
-                    startActivity(browserIntent);
-                } catch (ActivityNotFoundException e) {
-                    //In case the device does not have a browser capable of opening this link. (Better safe than sorry!)
-                    e.printStackTrace();
-                }
+                OfferDialogFragment _offerDialogFragment = OfferDialogFragment.newInstance(offer);
+                _offerDialogFragment.show(getFragmentManager(),"OfferDialog");
+
             }
         });
         mOffersRecyclerView.setAdapter(mOfferAdapter);
