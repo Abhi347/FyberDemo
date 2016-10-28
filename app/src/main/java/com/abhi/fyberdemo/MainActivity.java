@@ -1,6 +1,7 @@
 package com.abhi.fyberdemo;
 
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -16,7 +17,7 @@ import com.noob.lumberjack.LumberJack;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements FragmentListener{
+public class MainActivity extends AppCompatActivity implements FragmentListener {
     private FormFragment mFormFragment;
     private OffersFragment mOffersFragment;
 
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        if(!BuildConfig.DEBUG){
+        if (!BuildConfig.DEBUG) {
             LumberJack.setLogLevel(LogLevel.None);
         }
 
@@ -64,7 +65,25 @@ public class MainActivity extends AppCompatActivity implements FragmentListener{
 
     @Override
     public void onOfferReceived(OfferResponse response) {
-        showOffersFragment(response);
+        String errorMessage = null;
+        if (response == null) {
+            errorMessage = "Didn't receive any valid response";
+        } else if (response.getSignature() == null) {
+            errorMessage = "Didn't receive Response signature";
+        } else if (!response.isValidResponse()) {
+            errorMessage = "Response signature is not valid";
+        } else {
+            showOffersFragment(response);
+        }
+
+        if (errorMessage != null) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Error")
+                    .setMessage(errorMessage)
+                    .setNeutralButton("OK", null)
+                    .create()
+                    .show();
+        }
     }
 
     @Override

@@ -10,6 +10,7 @@ import com.abhi.fyberdemo.R;
 import com.abhi.fyberdemo.listeners.FragmentListener;
 import com.abhi.fyberdemo.listeners.OfferListener;
 import com.abhi.fyberdemo.models.OfferResponse;
+import com.abhi.fyberdemo.utilities.AutoFillUtility;
 import com.abhi.fyberdemo.utilities.FiberController;
 
 import butterknife.BindView;
@@ -50,7 +51,7 @@ public class FormFragment extends BaseFragment {
 
     @Override
     protected void setupUI(View parent) {
-        //AutoFillUtility.fillFormData(mUidEditText,mApiKeyEditText,mAppIdEditText,mPub0EditText);
+        AutoFillUtility.fillFormData(mUidEditText,mApiKeyEditText,mAppIdEditText,mPub0EditText);
     }
 
     @Override

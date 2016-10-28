@@ -3,6 +3,7 @@ package com.abhi.fyberdemo.utilities;
 import com.google.common.hash.HashCode;
 import com.google.common.hash.Hashing;
 
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -56,5 +57,10 @@ public class FyberUtility {
         String preHashString = sortedParams + "&" + apiKey;
         final HashCode hashCode = Hashing.sha1().hashString(preHashString, Charset.defaultCharset());
         return hashCode.toString();
+    }
+    public static boolean validateResponse(String responseBody, String responseSignature, String apiKey) throws IOException {
+        String preHashString = responseBody+apiKey;
+        final HashCode hashCode = Hashing.sha1().hashString(preHashString, Charset.defaultCharset());
+        return responseSignature.equalsIgnoreCase(hashCode.toString());
     }
 }

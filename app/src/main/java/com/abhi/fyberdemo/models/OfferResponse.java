@@ -11,6 +11,8 @@ public class OfferResponse {
     private int pages;
     private InformationModel information;
     private OfferModel[] offers;
+    private transient String signature;
+    private transient boolean isValidResponse;
 
     public boolean containsOffers(){
         return getOffers() != null && getOffers().length > 0;
@@ -64,6 +66,22 @@ public class OfferResponse {
 
     public void setOffers(OfferModel[] offers) {
         this.offers = offers;
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
+    }
+
+    public boolean isValidResponse() {
+        return isValidResponse;
+    }
+
+    public void setValidResponse(boolean validResponse) {
+        isValidResponse = validResponse;
     }
 
     //endregion
