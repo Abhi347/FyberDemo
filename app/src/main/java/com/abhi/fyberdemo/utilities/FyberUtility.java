@@ -15,6 +15,7 @@ import java.util.HashMap;
 
 public class FyberUtility {
 
+    //generates a HashMap for the parameters
     public static HashMap<String,String> getOffersHashMap(String appId,
                                                           String googleAdId,
                                                           String pub0,
@@ -38,6 +39,7 @@ public class FyberUtility {
         return paramsMap;
     }
 
+    //Sorts the HashMap in ascending order of its keys
     public static String getSortedParams(HashMap<String, String> paramsMap) {
         ArrayList<String> sortedKeys = new ArrayList<>(paramsMap.keySet());
         Collections.sort(sortedKeys);
@@ -53,11 +55,14 @@ public class FyberUtility {
         return _stringBuilder.toString();
     }
 
+    //get SHA1 hash of concatenated value of sortedParams and apiKey
     public static String getHashKey(String sortedParams, String apiKey) {
         String preHashString = sortedParams + "&" + apiKey;
         final HashCode hashCode = Hashing.sha1().hashString(preHashString, Charset.defaultCharset());
         return hashCode.toString();
     }
+
+    //validates the OkHttp Response using response signature and apiKey
     public static boolean validateResponse(String responseBody, String responseSignature, String apiKey) throws IOException {
         String preHashString = responseBody+apiKey;
         final HashCode hashCode = Hashing.sha1().hashString(preHashString, Charset.defaultCharset());

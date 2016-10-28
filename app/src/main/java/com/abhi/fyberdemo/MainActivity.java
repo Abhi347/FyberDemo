@@ -30,9 +30,11 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         if (!BuildConfig.DEBUG) {
+            //Turn Off LumberJack logs on Release builds
             LumberJack.setLogLevel(LogLevel.None);
         }
 
+        //Instantiate FiberController with the Activity context
         FiberController.getInstance().init(this);
 
         onHideProgress();

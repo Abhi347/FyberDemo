@@ -27,7 +27,7 @@ import okhttp3.Response;
 
 public class FiberController {
 
-    public static final String BASE_OFFERS_URL = "http://api.fyber.com/feed/v1/offers.json";
+    private static final String BASE_OFFERS_URL = "http://api.fyber.com/feed/v1/offers.json";
 
     private Context mContext;
     private String mGoogleAdId = null;
@@ -113,6 +113,7 @@ public class FiberController {
         }.execute();
     }
 
+    //Converts the OkHttp Response into OfferResponse object
     private OfferResponse getOfferResponse(Response response, String apiKey) throws IOException {
         String responseBody = null;
         OfferResponse offerResponse = null;
@@ -128,6 +129,7 @@ public class FiberController {
         return offerResponse;
     }
 
+    //Fetches offer-wall data and returns an OkHttp Response
     private Response fetchData(String uid, String apiKey, String appId, String pub0) throws IOException {
         OkHttpClient client = new OkHttpClient();
 

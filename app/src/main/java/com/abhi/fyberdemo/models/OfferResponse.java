@@ -11,8 +11,8 @@ public class OfferResponse {
     private int pages;
     private InformationModel information;
     private OfferModel[] offers;
-    private transient String signature;
-    private transient boolean isValidResponse;
+    private transient String signature; //X-Sponsorpay-Response-Signature
+    private transient boolean isValidResponse = false; //Whether response is validated using X-Sponsorpay-Response-Signature header
 
     public boolean containsOffers(){
         return getOffers() != null && getOffers().length > 0;

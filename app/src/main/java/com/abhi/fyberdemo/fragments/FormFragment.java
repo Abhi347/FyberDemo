@@ -10,7 +10,6 @@ import com.abhi.fyberdemo.R;
 import com.abhi.fyberdemo.listeners.FragmentListener;
 import com.abhi.fyberdemo.listeners.OfferListener;
 import com.abhi.fyberdemo.models.OfferResponse;
-import com.abhi.fyberdemo.utilities.AutoFillUtility;
 import com.abhi.fyberdemo.utilities.FiberController;
 
 import butterknife.BindView;
@@ -51,7 +50,8 @@ public class FormFragment extends BaseFragment {
 
     @Override
     protected void setupUI(View parent) {
-        AutoFillUtility.fillFormData(mUidEditText,mApiKeyEditText,mAppIdEditText,mPub0EditText);
+        //Turn off for production builds
+        //AutoFillUtility.fillFormData(mUidEditText,mApiKeyEditText,mAppIdEditText,mPub0EditText);
     }
 
     @Override
@@ -66,6 +66,7 @@ public class FormFragment extends BaseFragment {
         String appId = mAppIdEditText.getText().toString();
         String pub0 = mPub0EditText.getText().toString();
 
+        //Ensure the data is not empty
         if (uid.isEmpty() || apiKey.isEmpty() || appId.isEmpty() || pub0.isEmpty()) {
             new AlertDialog.Builder(getActivity())
                     .setTitle("Error")

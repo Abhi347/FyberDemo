@@ -64,9 +64,11 @@ public class OffersFragment extends BaseFragment {
             @Override
             public void onOfferClick(View view, OfferModel offer) {
                 try {
+                    //Open browser for offer link directly. Could have used a popup to show first.
                     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(offer.getLink()));
                     startActivity(browserIntent);
                 } catch (ActivityNotFoundException e) {
+                    //In case the device does not have a browser capable of opening this link. (Better safe than sorry!)
                     e.printStackTrace();
                 }
             }
@@ -75,6 +77,7 @@ public class OffersFragment extends BaseFragment {
         loadOffers(mOfferResponse);
     }
 
+    //Loads Offers from OfferResponse to mOfferAdapter
     public void loadOffers(OfferResponse offerResponse){
         if(mOfferAdapter==null || mNoOffersTextView==null || mOffersRecyclerView==null){
             throw new IllegalStateException("onCreateView and/or setupUI is not called yet");

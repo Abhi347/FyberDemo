@@ -14,6 +14,7 @@ import butterknife.ButterKnife;
  * Created by abhi on 25/10/16.
  */
 
+//Base class for all the fragments in the project
 public abstract class BaseFragment extends Fragment {
 
     @Override
