@@ -47,3 +47,4 @@ captures/
 ### Android Patch ###
 gen-external-apklibs
 AutoFillUtility.java
+google-services.json
