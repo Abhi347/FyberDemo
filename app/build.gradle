@@ -25,30 +25,30 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    androidTestCompile 'junit:junit:4.12'
-    androidTestCompile 'org.mockito:mockito-core:2.2.9'
-    androidTestCompile 'org.hamcrest:hamcrest-library:1.3'
 
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.hamcrest:hamcrest-library:1.3'
-    testCompile 'org.mockito:mockito-core:2.2.9'
-    testCompile 'org.robolectric:robolectric:3.1.1'
-    testCompile 'org.khronos:opengl-api:gl1.1-android-2.1_r1'
+
+
+
 
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:support-v4:24.2.1'
     compile 'com.android.support:recyclerview-v7:24.2.1'
     compile 'com.android.support:cardview-v7:24.2.1'
-
-    compile 'com.google.android.gms:play-services-ads:9.6.1'
+    compile 'com.google.android.gms:play-services-ads:9.8.0'
     compile 'com.google.guava:guava:19.0'
     compile 'com.google.code.gson:gson:2.7'
-
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.github.Abhi347:LumberJack:0.0.2'
-
-    apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'com.jakewharton:butterknife:8.4.0'
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.hamcrest:hamcrest-library:1.3'
+    testCompile 'org.mockito:mockito-core:2.2.9'
+    testCompile 'org.robolectric:robolectric:3.1.1'
+    testCompile 'org.khronos:opengl-api:gl1.1-android-2.1_r1'
+    androidTestCompile 'junit:junit:4.12'
+    androidTestCompile 'org.mockito:mockito-core:2.2.9'
+    androidTestCompile 'org.hamcrest:hamcrest-library:1.3'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
 }
 apply plugin: 'com.google.gms.google-services'

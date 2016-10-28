@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:text="Title"
                 android:textAppearance="@android:style/TextAppearance.Holo.Medium"
-                android:textColor="#525F72"/>
+                android:textColor="@color/colorTextDark"/>
 
             <TextView
                 android:id="@+id/text_action"
@@ -37,17 +37,17 @@
                 android:layout_height="wrap_content"
                 android:text="Download and start"
                 android:textAppearance="@android:style/TextAppearance.Holo.Small"
-                android:textColor="#999B9F"/>
+                android:textColor="@color/colorTextLight"/>
         </LinearLayout>
         <TextView
             android:id="@+id/text_payout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:background="#2BAFCD"
-            android:text="+3"
-            android:minWidth="50dp"
+            android:background="@color/colorPrimary"
             android:gravity="center"
+            android:minWidth="50dp"
+            android:text="+3"
             android:textColor="#fff"
             android:textSize="15sp"
             android:textStyle="bold"/>
